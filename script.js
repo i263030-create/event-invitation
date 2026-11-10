@@ -1,14 +1,16 @@
-const cancelBtn = document.createElement('button');
+// Shared JavaScript for the Event Invitation website
+document.addEventListener("DOMContentLoaded", () => {
+  const rsvpForm = document.getElementById("rsvp-form");
 
-// 2. Add text and a custom ID to the button
-cancelBtn.innerText = 'Click me!!';
-cancelBtn.id = 'dynamic-cancel-btn';
+  if (rsvpForm) {
+    rsvpForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const guestName = document.getElementById("guest-name").value.trim();
+      const attendance = document.getElementById("attendance").value;
+      const status = document.getElementById("rsvp-status");
 
-// 3. Define what happens when the button is clicked
-cancelBtn.addEventListener('click', () => {
-    alert('Thanks! For your Time and Coming in Event');
-    // Add your custom cancel logic/code here
+      status.textContent = `Thank you, ${guestName}. Your response is: ${attendance}. This is a demonstration only; your response has not been sent.`;
+      rsvpForm.reset();
+    });
+  }
 });
-
-// 4. Append the button directly to the body of the web page
-document.body.appendChild(cancelBtn);
